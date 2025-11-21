@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Discools</title>
+  <link rel="stylesheet" href="/css/pag_style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="topbar">
+      <nav class="nav">
+        <ul class="nav-center">
+          <li class="nav-item"><a href="#" class="nav-link active">HOME</a></li>
+        </ul>
+
+        <div class="nav-center-logo">
+          <img src="/midia/icones/logoDiscools.png" alt="logo" class="logo">
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-layout ativo-pagamento" id="mainLayout">
+
+    <section class="tela tela-pagamento">
+      <div class="buying-steps">
+        <img class="steps-image" src="/midia/icones/iconeProcessoPagamento.png" alt="Processo de Pagamento">
+      </div>
+  
+      <h3 class="payment-title">ESCOLHA A FORMA DE PAGAMENTO:</h3>
+  
+      <div class="payment-options">
+        <button class="payment-btn"></button>
+        <button class="payment-btn"></button>
+        <button class="payment-btn"></button>
+      </div>
+  
+      <button id="btnFazerPedido" class="submit-btn">FAZER PEDIDO</button>
+    </section>
+  
+    <section class="tela tela-sucesso">
+      <h3 class="success-title">PEDIDO REALIZADO COM SUCESSO!</h3>
+  
+      <div class="icon-wrapper">
+          <img src="/midia/icones/iconeFundoCheck.png" class="icone-fundo">
+          <img src="/midia/icones/iconeCheck.png" class="icone-topo" alt="Check de Sucesso">
+      </div>
+  
+      <button class="submit-btn" >CONTINUAR NAVEGANDO</button>
+    </section>
+    
+  </main>
+
+  <script src="/javascript/app.js"></script>
+  <!--
+  <script>
+    document.getElementById("btnFazerPedido").onclick = () => {
+      const main = document.getElementById("mainLayout");
+
+      main.classList.remove("ativo-pagamento");
+      main.classList.add("ativo-sucesso");
+    };
+  </script>
+  -->
+</body>
+</html>
