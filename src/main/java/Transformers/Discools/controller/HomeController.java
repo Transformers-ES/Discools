@@ -15,4 +15,9 @@ public class HomeController {
     public String pagamento(){
         return "pagamento";
     }
+    
+    @GetMapping("/prod")
+    public String produtos(){
+        return "prod";
+    }
 }

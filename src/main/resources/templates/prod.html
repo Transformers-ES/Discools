@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Discools</title>
+  <link rel="stylesheet" href="/css/prod_style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+  <!-- ====== HEADER / NAV ====== -->
+  <header class="site-header">
+    <div class="topbar">
+      <nav class="nav">
+        <ul class="nav-left">
+          <li class="nav-item"><a href="#" class="nav-link active">HOME</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">ALL DISCOOLS</a></li>
+        </ul>
+
+        <div class="nav-center-logo">
+          <!-- logo entre barra e conteúdo (design) -->
+          <img src="/midia/icones/logoDiscools.png" alt="logo" class="logo">
+        </div>
+
+        <ul class="nav-right">
+          <li class="nav-item search">
+              <div class="search-wrapper">
+                  <input class="search-input" placeholder="Buscar..." />
+                  <img src="/midia/icones/iconePesquisa.png" alt="icon" id="iconPesquisa">
+              </div>
+          </li>
+          <li class="nav-item icon" id="profileIcon" title="perfil"><img src="/midia/icones/iconeUsuario.png" alt="icon" class="icon-img"></li>
+          <li class="nav-item icon" id="cartToggle" title="carrinho"><img src="/midia/icones/iconeCarrinho.png" alt="icon" class="icon-img"></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+    <!-- ====== MAIN LAYOUT ====== -->
+    <main class="main-layout" id="mainLayout">
+        <!-- left/main content -->
+        <section class="content-area">
+            <!-- disco maior em destaque-->
+            <section class="featured-product">
+                <div class="product-card hor" data-id="104">
+                        <div class="pthumb"></div>
+                        <div class="product-info">
+                            <div class="ptitle">DISCO 1</div>
+                            <div class="partist">NOME DO ARTISTA</div>
+                            <div class="pprice">R$ 100,00</div>
+                            <div class="pdesc">Uau, esse disco é um disco legal, uhu! É imperdível. Ele toca músicas. Não compre se você não tiver aquele negócio que toca ele, mas, se quiser comprar para decorar, pode levar. Vai de você, cada um faz o que faz.</div>
+                            <button class="btn-add" data-prod='{"id":101,"title":"DISCO 1","price":100}'>
+                                Adicionar
+                            </button>
+                        </div>                   
+                </div>
+            </section>
+
+            <!-- Galerias / categorias -->
+            <section class="catalog">
+                <!-- Repetir bloco para cada categoria -->
+                <article class="category" data-category-id="1">
+                    <h2 class="category-title">Veja tambem</h2>
+                    <div class="product-grid" id="cat-1">
+                        <!-- produtos de exemplo (adicione manualmente aqui) -->
+                        <div class="product-card" data-id="101">
+                            <a href="/product/101" class="product-link">
+                                <div class="product-thumb"></div>
+                                <div class="product-meta">
+                                    <div class="product-title">DISCO 1</div>
+                                    <div class="product-artist">NOME DO ARTISTA</div>
+                                    <div class="product-price">R$ 100,00</div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="product-card" data-id="102">
+                            <a href="/product/102" class="product-link">
+                                <div class="product-thumb"></div>
+                                <div class="product-meta">
+                                    <div class="product-title">DISCO 2</div>
+                                    <div class="product-artist">NOME DO ARTISTA</div>
+                                    <div class="product-price">R$ 100,00</div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="product-card" data-id="103">
+                            <a href="/product/103" class="product-link">
+                                <div class="product-thumb"></div>
+                                <div class="product-meta">
+                                    <div class="product-title">DISCO 3</div>
+                                    <div class="product-artist">NOME DO ARTISTA</div>
+                                    <div class="product-price">R$ 100,00</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="product-card" data-id="103">
+                            <a href="/product/103" class="product-link">
+                                <div class="product-thumb"></div>
+                                <div class="product-meta">
+                                    <div class="product-title">DISCO 3</div>
+                                    <div class="product-artist">NOME DO ARTISTA</div>
+                                    <div class="product-price">R$ 100,00</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </section>
+        </section>
+    </main>
+
+    <!-- ====== CART SIDEBAR ====== -->
+    <aside class="cart-sidebar" id="cartSidebar" aria-hidden="true">
+        <header class="cart-header">
+            <h3>CARRINHO</h3>
+            <button id="closeCart" class="close-cart">✕</button>
+        </header>
+        <div class="cart-body" id="cartItems">
+            <p class="empty-msg">Nenhum produto no carrinho.</p>
+        </div>
+        <footer class="cart-footer">
+            <button id="checkoutBtn" class="btn-buy">COMPRAR</button>
+        </footer>
+    </aside>
+
+    <script src="/javascript/app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <footer class="footer">
+        CONTATE-NOS: DISCOOLS@GMAIL.COM
+    </footer>
+</body>
+
+</html>
