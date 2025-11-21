@@ -1,11 +1,171 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<!doctype html>
+<html lang="pt-BR">
+  
 <head>
-    <meta charset="UTF-8">
-    <title>Discools</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Discools</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
+  
 <body>
-    <h1>Olá Pessoas!</h1>
-    <p> Discool está ao passo de se tornar realidade! 🎉</p>
+  <!-- ====== HEADER / NAV ====== -->
+  <header class="site-header">
+    <div class="topbar">
+      <nav class="nav">
+        <ul class="nav-left">
+          <li class="nav-item"><a href="#" class="nav-link active">HOME</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">ALL DISCOOLS</a></li>
+        </ul>
+
+        <div class="nav-center-logo">
+          <!-- logo entre barra e conteúdo (design) -->
+          <img src="/midia/icones/logoDiscools.png" alt="logo" class="logo">
+        </div>
+
+        <ul class="nav-right">
+          <li class="nav-item search">
+              <div class="search-wrapper">
+                  <input class="search-input" placeholder="Buscar..." />
+                  <img src="/midia/icones/iconePesquisa.png" alt="icon" id="iconPesquisa">
+              </div>
+          </li>
+          <li class="nav-item icon" id="profileIcon" title="perfil"><img src="/midia/icones/iconeUsuario.png" alt="icon" class="icon-img"></li>
+          <li class="nav-item icon" id="cartToggle" title="carrinho"><img src="/midia/icones/iconeCarrinho.png" alt="icon" class="icon-img"></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ====== MAIN LAYOUT ====== -->
+  <main class="main-layout" id="mainLayout">
+    <!-- left/main content -->
+    <section class="content-area">
+
+      <!-- CARROSSEL PLACEHOLDER -->
+      <section class="carousel-placeholder" id="carouselPlaceholder">
+
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+
+        <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+        </ol>
+
+        <div class="carousel-inner">
+
+          <div class="carousel-item active">
+            <img class="d-block w-100" src="/midia/banners/banner-Jvke.png" alt="Primeiro slide">
+          </div>
+  
+          <div class="carousel-item">
+            <img class="d-block w-100" src="/midia/banners/banner-LinkinPark.png" alt="Segundo slide">
+          </div>
+
+          <div class="carousel-item">
+            <img class="d-block w-100" src="/midia/banners/banner-Taylor.png" alt="Terceiro slide">
+          </div>
+          
+          <div class="carousel-item">
+            <img class="d-block w-100" src="/midia/banners/banner-TheNormalAlbum.png" alt="Quarto slide">
+          </div>
+          
+        </div>
+
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+        </a>
+
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+        </a>
+
+        </div>
+
+    
+      </section>
+
+      <!-- Galerias / categorias -->
+      <section class="catalog">
+        <!-- Repetir bloco para cada categoria -->
+        <article class="category" data-category-id="1">
+          <h2 class="category-title">TÍTULO 1</h2>
+          <div class="product-grid" id="cat-1">
+            <!-- produtos de exemplo (adicione manualmente aqui) -->
+            <div class="product-card" data-id="101">
+              <a href="/product/101" class="product-link">
+                <div class="product-thumb"></div>
+                <div class="product-meta">
+                  <div class="product-title">DISCO 1</div>
+                  <div class="product-artist">NOME DO ARTISTA</div>
+                  <div class="product-price">R$ 100,00</div>
+                </div>
+              </a>
+              <button class="btn-add" data-prod='{"id":101,"title":"DISCO 1","price":100}'>Adicionar</button>
+            </div>
+
+            <div class="product-card" data-id="102">
+              <a href="/product/102" class="product-link">
+                <div class="product-thumb"></div>
+                <div class="product-meta">
+                  <div class="product-title">DISCO 2</div>
+                  <div class="product-artist">NOME DO ARTISTA</div>
+                  <div class="product-price">R$ 100,00</div>
+                </div>
+              </a>
+              <button class="btn-add" data-prod='{"id":102,"title":"DISCO 2","price":100}'>Adicionar</button>
+            </div>
+
+            <div class="product-card" data-id="103">
+              <a href="/product/103" class="product-link">
+                <div class="product-thumb"></div>
+                <div class="product-meta">
+                  <div class="product-title">DISCO 3</div>
+                  <div class="product-artist">NOME DO ARTISTA</div>
+                  <div class="product-price">R$ 100,00</div>
+                </div>
+              </a>
+              <button class="btn-add" data-prod='{"id":103,"title":"DISCO 3","price":100}'>Adicionar</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="category" data-category-id="2">
+          <h2 class="category-title">TÍTULO 2</h2>
+          <div class="product-grid" id="cat-2"></div>
+        </article>
+
+        <article class="category" data-category-id="3">
+          <h2 class="category-title">TÍTULO 3</h2>
+          <div class="product-grid" id="cat-3"></div>
+        </article>
+      </section>
+    </section>
+  </main>
+
+  <!-- ====== CART SIDEBAR ====== -->
+  <aside class="cart-sidebar" id="cartSidebar" aria-hidden="true">
+    <header class="cart-header">
+      <h3>CARRINHO</h3>
+      <button id="closeCart" class="close-cart">✕</button>
+    </header>
+    <div class="cart-body" id="cartItems">
+      <p class="empty-msg">Nenhum produto no carrinho.</p>
+    </div>
+    <footer class="cart-footer">
+      <button id="checkoutBtn" class="btn-buy">COMPRAR</button>
+    </footer>
+  </aside>
+
+  <script src="/javascript/app.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
 </body>
 </html>
