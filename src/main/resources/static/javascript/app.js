@@ -174,3 +174,10 @@ fetch('/api/products')
   .then(data => renderProducts(data));
 */
 
+/* Troca de tela de processo para sucesso na Tela de Pagamento */
+document.getElementById("btnFazerPedido").onclick = () => {
+  const main = document.getElementById("mainLayout");
+
+  main.classList.remove("ativo-pagamento");
+  main.classList.add("ativo-sucesso");
+};

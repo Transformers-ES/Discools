@@ -1,0 +1,107 @@
+:root{
+  --purple:#7623c7;
+  --purple-dark:#5e18a8;
+  --purple-light:#cfa3f1;
+  --ivory: #fdeecf;
+  --accent:#f7a51b; /* laranja indicador */
+  --gray:#838383;
+  --max-width:1200px;
+}
+
+/* Reset simples */
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family: "Montserrat", Arial, sans-serif;background:#f2f1f0;color:#333;line-height:1.2}
+a{color:inherit;text-decoration:none}
+
+/* HEADER */
+.site-header {position: fixed;top: 0;left: 0;right: 0;z-index: 40;box-shadow: 0 15px 20px rgb(0, 0, 0,0.65);}
+.topbar{background:var(--purple);padding:15px 8%;box-shadow:0 3px 0 rgba(0,0,0,0.08)}
+.nav{display:flex;align-items:center;justify-content:space-between;max-width:var(--max-width);margin:0 auto}
+.nav-center{display:flex;justify-content:center;width:100%;list-style:none;gap:28px;}
+.nav-item{color:#fff;font-weight:700}
+.nav-link{color:#fff;letter-spacing:1px}
+.nav-link.active{opacity:1}
+.nav-center-logo{position:absolute;left:45px;top:58px;transform:translateY(-50%)}
+.logo{height:155px; /* ajuste conforme necessário */ display:block}
+.icon-img{height:24px;display:block}
+.nav ul {margin-bottom: 0;}
+
+/* layout main (debaixo do header) */
+.main-layout{margin: 0 auto;padding:120px 20px 40px;transition:margin-right .25s ease;max-width:700px;text-align:center}
+
+.buying-steps {margin-bottom:40px;max-width:700px}
+
+.steps-image{
+  width: 500px;
+  height: auto;
+}
+
+.icon-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  margin-bottom: 100px;
+}
+
+.icone-fundo {
+  width: 250px;
+  height: auto;
+}
+
+.icone-topo {
+  position: absolute;
+  width: 350px;
+  height: auto;
+}
+
+/* ========== PAGAMENTOS ========== */
+
+.payment-title {font-size:32px;font-weight:800;color:#555;margin-bottom:14px;letter-spacing:1px}
+
+.success-title {text-align:center;font-size:32px;font-weight:800;color:#555;margin-bottom:14px;letter-spacing:1px}
+
+.payment-options {display:flex;flex-direction:column;gap:15px;margin-bottom:60px;}
+
+.payment-btn {width: 100%;height:40px;background:#bbb;border-radius:8px;border:none;cursor:pointer;}
+
+/* ========== BOTÃO FINAL ========== */
+
+.submit-btn {background:#B97CF0;padding: 12px 40px;border:none;color:#fff;border-radius:12px;font-weight:700;cursor:pointer;}
+
+/* mensagens vazio */
+.empty-msg{color:#2b1b3c;font-weight:700}
+
+.tela {
+  display: none;
+}
+
+.main-layout.ativo-pagamento .tela-pagamento {
+  display: block;
+}
+
+.main-layout.ativo-sucesso .tela-sucesso {
+  display: block;
+}
+
+/* responsividade */
+@media (max-width:1024px){
+  :root{ --product-columns: 2 } /* menos colunas em tablet */
+  .logo{height:56px}
+  .carousel-placeholder{height:240px}
+  .product-thumb{height:180px}
+  .cart-sidebar{width:340px}
+  .main-layout.shifted{ margin-right:340px;}
+}
+
+@media (max-width:640px){
+  :root{ --product-columns: 1 } /* mobile: 1 coluna */
+  .nav-center-logo{position:relative;left:auto;top:auto;transform:none;margin-right:12px}
+  .nav{flex-wrap:wrap;gap:8px}
+  .carousel-placeholder{height:180px}
+  .product-thumb{height:160px}
+  .cart-sidebar{width:100%;right:-100%}
+  .cart-sidebar.open{ right:0; }
+  .main-layout.shifted{ margin-right:0; } /* mobile: cart cobre, não empurra */
+}
