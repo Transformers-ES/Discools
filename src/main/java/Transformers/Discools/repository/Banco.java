@@ -28,22 +28,6 @@ public class Banco {
         listaDiscos = new ArrayList<>();
         listaItensPedido = new ArrayList<>();
         listaPedidos = new ArrayList<>();
-        carregarDadosIniciais();
-    }
-
-    // ===================== DADOS INICIAIS =====================
-    private void carregarDadosIniciais() {
-        // Cria um usuário administrador
-        Usuario administrador = new Usuario(idUsuario++, "Admin", "admin@email.com",
-                                            "1234", "Rua Central", true);
-        listaUsuarios.add(administrador);
-
-        // Cria um disco inicial
-        DiscosCD discoExemplo = new DiscosCD(idDisco++, "this is what ____ feels like", "JVKE",
-                                             "Pop", 42, 59.90f,
-                                             "Um dos álbuns mais lindos da história.",
-                                             10, "CD");
-        listaDiscos.add(discoExemplo);
     }
 
     // ===================== MÉTODOS DE USUÁRIO =====================

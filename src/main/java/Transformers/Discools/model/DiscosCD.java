@@ -10,11 +10,12 @@ public class DiscosCD {
     private String descricao;
     private int estoque;
     private String tipo;
+    private String capa;
 
     public DiscosCD() {}
 
     public DiscosCD(int id, String nome, String artista, String genero, int duracao, float preco, 
-                    String descricao, int estoque, String tipo) {
+                    String descricao, int estoque, String tipo, String capa) {
         this.id = id;
         this.nome = nome;
         this.artista = artista;
@@ -24,6 +25,7 @@ public class DiscosCD {
         this.descricao = descricao;
         this.estoque = estoque;
         this.tipo = tipo;
+        this.capa = capa;
     }
 
     public int getId() {
@@ -96,5 +98,13 @@ public class DiscosCD {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public String getCapa(){
+        return capa;
+    }
+
+    public void setCapa(String capa){
+        this.capa = capa;
     }
 }
