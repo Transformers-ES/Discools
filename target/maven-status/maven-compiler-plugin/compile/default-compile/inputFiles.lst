@@ -1,6 +1,8 @@
 /home/runner/workspace/src/main/java/Transformers/Discools/DiscoolsApplication.java
-/home/runner/workspace/src/main/java/Transformers/Discools/controller/CategoriaController.java
+/home/runner/workspace/src/main/java/Transformers/Discools/controller/CategoriaRestController.java
+/home/runner/workspace/src/main/java/Transformers/Discools/controller/DiscoRestController.java
 /home/runner/workspace/src/main/java/Transformers/Discools/controller/HomeController.java
+/home/runner/workspace/src/main/java/Transformers/Discools/controller/ProdutoController.java
 /home/runner/workspace/src/main/java/Transformers/Discools/model/CategoriaDisco.java
 /home/runner/workspace/src/main/java/Transformers/Discools/model/DiscosCD.java
 /home/runner/workspace/src/main/java/Transformers/Discools/model/ItemDoPedido.java

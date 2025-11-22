@@ -13,16 +13,15 @@ public class DiscoService {
     public List<DiscosCD> listarTodos() {
         return Banco.obterTodosDiscos();
     }
-
-    public DiscosCD buscarPorId(int id) {
-        return Banco.buscarDiscoPorId(id);
-    }
-    */
-    
+     */
+       
     // REGRA DE NEGÓCIO 1: Pega uma categoria (em alta, lançamentos, recomendados) e retorna os discos dela
     public CategoriaDisco listarPorCategoria(int categoriaId) {
         return Banco.buscarCategoriaPorId(categoriaId);
     }
 
-    
+    // REGRA DE NEGÓCIO 2: Pega um disco específico e retorna suas informações
+    public DiscosCD buscarPorId(int id) {
+        return Banco.buscarDiscoPorId(id);
+    }
 }

@@ -42,7 +42,7 @@ async function carregarCategoria(id, titleElement, gridElement) {
       card.dataset.id = disco.id;
 
       card.innerHTML = `
-        <a href="home/produto/${disco.id}" class="product-link">
+        <a href="produto/${disco.id}" class="product-link">
           <div class="product-thumb">
             <img src="${disco.capa}" alt="${disco.nome}">
           </div>
