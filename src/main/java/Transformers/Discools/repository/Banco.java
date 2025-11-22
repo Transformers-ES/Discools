@@ -1,164 +1,154 @@
-package Transformers.Discools.repository;
+    package Transformers.Discools.repository;
 
-import Transformers.Discools.model.DiscosCD;
-import Transformers.Discools.model.ItemDoPedido;
-import Transformers.Discools.model.Pedido;
-import Transformers.Discools.model.Usuario;
-    
-import java.util.ArrayList;
-import java.util.List;
+    import Transformers.Discools.model.*;
 
-public class Banco {
+    import java.util.ArrayList;
+    import java.util.List;
 
-    // ===================== LISTAS DE DADOS =====================
-    private List<Usuario> listaUsuarios;
-    private List<DiscosCD> listaDiscos;
-    private List<ItemDoPedido> listaItensPedido;
-    private List<Pedido> listaPedidos;
+    public class Banco {
 
-    // ===================== CONTADORES DE IDs =====================
-    private int idUsuario = 1;
-    private int idDisco = 1;
-    private int idItemPedido = 1;
-    private int idPedido = 1;
+        // ===================== LISTAS DE DADOS (STATIC) =====================
+        private static List<Usuario> listaUsuarios = new ArrayList<>();
+        private static List<DiscosCD> listaDiscos = new ArrayList<>();
+        private static List<ItemDoPedido> listaItensPedido = new ArrayList<>();
+        private static List<Pedido> listaPedidos = new ArrayList<>();
+        private static List<CategoriaDisco> listaCategorias = new ArrayList<>();
 
-    // ===================== CONSTRUTOR =====================
-    public Banco() {
-        listaUsuarios = new ArrayList<>();
-        listaDiscos = new ArrayList<>();
-        listaItensPedido = new ArrayList<>();
-        listaPedidos = new ArrayList<>();
-    }
+        // ===================== CONTADORES DE IDs (STATIC) =====================
+        private static int idUsuario = 1;
+        private static int idDisco = 1;
+        private static int idItemPedido = 1;
+        private static int idPedido = 1;
 
-    // ===================== MÉTODOS DE USUÁRIO =====================
-    public void adicionarUsuario(Usuario novoUsuario) {
-        novoUsuario.setId(idUsuario++);
-        listaUsuarios.add(novoUsuario);
-    }
+        // ===================== CONSTRUTOR PRIVADO (NÃO USADO) =====================
+        private Banco() {}
 
-    public List<Usuario> obterTodosUsuarios() {
-        return listaUsuarios;
-    }
+        // ===================== MÉTODOS DE USUÁRIO =====================
+        public static void adicionarUsuario(Usuario novoUsuario) {
+            novoUsuario.setId(idUsuario++);
+            listaUsuarios.add(novoUsuario);
+        }
 
-    public Usuario buscarUsuarioPorId(int idUsuario) {
-        for (Usuario usuario : listaUsuarios) {
-            if (usuario.getId() == idUsuario) {
-                return usuario;
+        public static List<Usuario> obterTodosUsuarios() {
+            return listaUsuarios;
+        }
+
+        public static Usuario buscarUsuarioPorId(int id) {
+            return listaUsuarios.stream()
+                    .filter(u -> u.getId() == id)
+                    .findFirst()
+                    .orElse(null);
+        }
+
+        public static void atualizarUsuario(Usuario usuarioAtualizado) {
+            for (int i = 0; i < listaUsuarios.size(); i++) {
+                if (listaUsuarios.get(i).getId() == usuarioAtualizado.getId()) {
+                    listaUsuarios.set(i, usuarioAtualizado);
+                    return;
+                }
             }
         }
-        return null; // Retorna null se não encontrar
-    }
 
-    public void atualizarUsuario(Usuario usuarioAtualizado) {
-        for (int i = 0; i < listaUsuarios.size(); i++) {
-            if (listaUsuarios.get(i).getId() == usuarioAtualizado.getId()) {
-                listaUsuarios.set(i, usuarioAtualizado);
-                return;
+        public static void removerUsuario(int id) {
+            listaUsuarios.removeIf(u -> u.getId() == id);
+        }
+
+        // ===================== MÉTODOS DE DISCO =====================
+        public static void adicionarDisco(DiscosCD novoDisco) {
+            novoDisco.setId(idDisco++);
+            listaDiscos.add(novoDisco);
+        }
+
+        public static List<DiscosCD> obterTodosDiscos() {
+            return listaDiscos;
+        }
+
+        public static DiscosCD buscarDiscoPorId(int id) {
+            return listaDiscos.stream()
+                    .filter(d -> d.getId() == id)
+                    .findFirst()
+                    .orElse(null);
+        }
+
+        public static void atualizarDisco(DiscosCD discoAtualizado) {
+            for (int i = 0; i < listaDiscos.size(); i++) {
+                if (listaDiscos.get(i).getId() == discoAtualizado.getId()) {
+                    listaDiscos.set(i, discoAtualizado);
+                    return;
+                }
             }
         }
-    }
 
-    public void removerUsuario(int idUsuario) {
-        listaUsuarios.removeIf(usuario -> usuario.getId() == idUsuario);
-    }
-
-    // ===================== MÉTODOS DE DISCOSCD =====================
-    public void adicionarDisco(DiscosCD novoDisco) {
-        novoDisco.setId(idDisco++);
-        listaDiscos.add(novoDisco);
-    }
-
-    public List<DiscosCD> obterTodosDiscos() {
-        return listaDiscos;
-    }
-
-    public DiscosCD buscarDiscoPorId(int idDisco) {
-        for (DiscosCD disco : listaDiscos) {
-            if (disco.getId() == idDisco) {
-                return disco;
-            }
-        }
-        return null;
-    }
-
-    public void atualizarDisco(DiscosCD discoAtualizado) {
-        for (int i = 0; i < listaDiscos.size(); i++) {
-            if (listaDiscos.get(i).getId() == discoAtualizado.getId()) {
-                listaDiscos.set(i, discoAtualizado);
-                return;
-            }
-        }
-    }
-
-    public void removerDisco(int idDisco) {
-        listaDiscos.removeIf(disco -> disco.getId() == idDisco);
-    }
-
-    // ===================== MÉTODOS DE ITENS DE PEDIDO =====================
-    public void adicionarItemPedido(ItemDoPedido novoItem) {
-        novoItem.setId(idItemPedido++);
-        listaItensPedido.add(novoItem);
-    }
-
-    public List<ItemDoPedido> obterTodosItensPedido() {
-        return listaItensPedido;
-    }
-
-    public ItemDoPedido buscarItemPedidoPorId(int idItem) {
-        for (ItemDoPedido item : listaItensPedido) {
-            if (item.getId() == idItem) {
-                return item;
-            }
-        }
-        return null;
-    }
-
-    public void removerItemPedido(int idItem) {
-        listaItensPedido.removeIf(item -> item.getId() == idItem);
-    }
-
-    // ===================== MÉTODOS DE PEDIDO =====================
-    public void adicionarPedido(Pedido novoPedido) {
-        novoPedido.setId(idPedido++);
-        listaPedidos.add(novoPedido);
-    }
-
-    public List<Pedido> obterTodosPedidos() {
-        return listaPedidos;
-    }
-
-    public Pedido buscarPedidoPorId(int idPedido) {
-        for (Pedido pedido : listaPedidos) {
-            if (pedido.getId() == idPedido) {
-                return pedido;
-            }
-        }
-        return null;
-    }
-
-    public void removerPedido(int idPedido) {
-        listaPedidos.removeIf(pedido -> pedido.getId() == idPedido);
-    }
-
-    // ===================== MÉTODO AUXILIAR PARA RESUMO =====================
-    public void mostrarResumoBanco() {
-        System.out.println("===== USUÁRIOS =====");
-        for (Usuario usuario : listaUsuarios) {
-            System.out.println(usuario.getId() + " - " + usuario.getNome() +
-                               " | Admin: " + usuario.EhAdministrador());
+        public static void removerDisco(int id) {
+            listaDiscos.removeIf(d -> d.getId() == id);
         }
 
-        System.out.println("\n===== DISCOS =====");
-        for (DiscosCD disco : listaDiscos) {
-            System.out.println(disco.getId() + " - " + disco.getNome() +
-                               " | Preço: R$" + disco.getPreco());
+        // ===================== MÉTODOS DE ITENS DO PEDIDO =====================
+        public static void adicionarItemPedido(ItemDoPedido novoItem) {
+            novoItem.setId(idItemPedido++);
+            listaItensPedido.add(novoItem);
         }
 
-        System.out.println("\n===== PEDIDOS =====");
-        for (Pedido pedido : listaPedidos) {
-            System.out.println("Pedido " + pedido.getId() + " - Cliente: " +
-                               pedido.getUsuario().getNome() +
-                               " | Total: R$" + pedido.getTotal());
+        public static List<ItemDoPedido> obterTodosItensPedido() {
+            return listaItensPedido;
+        }
+
+        public static ItemDoPedido buscarItemPedidoPorId(int id) {
+            return listaItensPedido.stream()
+                    .filter(i -> i.getId() == id)
+                    .findFirst()
+                    .orElse(null);
+        }
+
+        public static void removerItemPedido(int id) {
+            listaItensPedido.removeIf(i -> i.getId() == id);
+        }
+
+        // ===================== MÉTODOS DE PEDIDO =====================
+        public static void adicionarPedido(Pedido novoPedido) {
+            novoPedido.setId(idPedido++);
+            listaPedidos.add(novoPedido);
+        }
+
+        public static List<Pedido> obterTodosPedidos() {
+            return listaPedidos;
+        }
+
+        public static Pedido buscarPedidoPorId(int id) {
+            return listaPedidos.stream()
+                    .filter(p -> p.getId() == id)
+                    .findFirst()
+                    .orElse(null);
+        }
+
+        public static void removerPedido(int id) {
+            listaPedidos.removeIf(p -> p.getId() == id);
+        }
+
+        // ===================== MÉTODOS DE CATEGORIA =====================
+        public static void adicionarCategoria(CategoriaDisco novaCategoria) {
+            listaCategorias.add(novaCategoria);
+        }
+
+        public static List<CategoriaDisco> obterTodasCategorias() {
+            return listaCategorias;
+        }
+
+        public static CategoriaDisco buscarCategoriaPorId(int id){
+            return listaCategorias.stream()
+                    .filter(c -> c.getId() == id)
+                    .findFirst()
+                    .orElse(null);
+        }
+
+        public static CategoriaDisco buscarCategoriaPorNome(String nome) {
+            return listaCategorias.stream()
+                    .filter(c -> c.getNomeCategoriaDisco().equals(nome))
+                    .findFirst()
+                    .orElse(null);
+        }
+
+        public static void removerCategoria(String nome) {
+            listaCategorias.removeIf(c -> c.getNomeCategoriaDisco().equals(nome));
         }
     }
-}

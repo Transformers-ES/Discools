@@ -12,9 +12,8 @@ public class Pedido {
         this.itens = new ArrayList<>();
     }
 
-    public Pedido(int id, Usuario usuario, List<ItemDoPedido> itens) {
+    public Pedido(int id, List<ItemDoPedido> itens) {
         this.id = id;
-        this.usuario = usuario;
         this.itens = itens;
     }
 
