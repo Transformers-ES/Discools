@@ -1,8 +1,11 @@
 Transformers/Discools/model/DiscosCD.class
 Transformers/Discools/model/ItemDoPedido.class
+Transformers/Discools/controller/CategoriaController.class
 Transformers/Discools/model/Pedido.class
 Transformers/Discools/model/Usuario.class
 Transformers/Discools/repository/Banco.class
 Transformers/Discools/controller/HomeController.class
 Transformers/Discools/DiscoolsApplication.class
-PovoaBanco.class
+Transformers/Discools/service/DiscoService.class
+Transformers/Discools/model/CategoriaDisco.class
+Transformers/Discools/repository/PovoaBanco.class

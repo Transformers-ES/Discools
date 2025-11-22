@@ -1,8 +1,11 @@
 /home/runner/workspace/src/main/java/Transformers/Discools/DiscoolsApplication.java
+/home/runner/workspace/src/main/java/Transformers/Discools/controller/CategoriaController.java
 /home/runner/workspace/src/main/java/Transformers/Discools/controller/HomeController.java
+/home/runner/workspace/src/main/java/Transformers/Discools/model/CategoriaDisco.java
 /home/runner/workspace/src/main/java/Transformers/Discools/model/DiscosCD.java
 /home/runner/workspace/src/main/java/Transformers/Discools/model/ItemDoPedido.java
 /home/runner/workspace/src/main/java/Transformers/Discools/model/Pedido.java
 /home/runner/workspace/src/main/java/Transformers/Discools/model/Usuario.java
 /home/runner/workspace/src/main/java/Transformers/Discools/repository/Banco.java
 /home/runner/workspace/src/main/java/Transformers/Discools/repository/PovoaBanco.java
+/home/runner/workspace/src/main/java/Transformers/Discools/service/DiscoService.java

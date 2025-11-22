@@ -20,9 +20,7 @@ function addToCart(item){
 }
 
 /* ---------- render carrinho ---------- */
-const cartSidebar = document.getElementById('cartSidebar');
-const mainLayout = document.getElementById('mainLayout');
-const cartToggle = document.getElementById('cartToggle');
+let cartSidebar, mainLayout, cartToggle;
 
 function openCart(){
   cartSidebar.classList.add('open');
@@ -35,15 +33,10 @@ function closeCart(){
   cartSidebar.setAttribute('aria-hidden','true');
 }
 
-document.getElementById('closeCart').addEventListener('click', closeCart);
-cartToggle.addEventListener('click', ()=> {
-  if(cartSidebar.classList.contains('open')) closeCart();
-  else openCart();
-});
-
 /* render items */
 function renderCart(){
   const container = document.getElementById('cartItems');
+  if (!container) return;
   const cart = loadCart();
   container.innerHTML = '';
   if(cart.length===0){
@@ -93,91 +86,118 @@ function renderCart(){
   });
 }
 
-/* botão comprar -> redireciona (página ainda não criada) */
-document.getElementById('checkoutBtn').addEventListener('click', ()=>{
-  // por enquanto redireciona para /checkout (crie essa rota no seu Spring)
-  window.location.href = '/checkout';
-});
-
-/* vincular botões "Adicionar" nas cards */
-document.querySelectorAll('.btn-add').forEach(btn=>{
-  btn.addEventListener('click', e=>{
-    const prod = JSON.parse(e.currentTarget.dataset.prod);
-    addToCart(prod);
-    openCart();
+/* Inicialização quando o DOM estiver pronto */
+document.addEventListener("DOMContentLoaded", () => {
+  // Inicializar variáveis do DOM
+  cartSidebar = document.getElementById('cartSidebar');
+  mainLayout = document.getElementById('mainLayout');
+  cartToggle = document.getElementById('cartToggle');
+  
+  // Configurar eventos do carrinho
+  document.getElementById('closeCart').addEventListener('click', closeCart);
+  cartToggle.addEventListener('click', ()=> {
+    if(cartSidebar.classList.contains('open')) closeCart();
+    else openCart();
   });
-});
-
-/* carregar carrinho ao iniciar */
-renderCart();
-
-/* ---------- INTEGRAÇÃO REST (spring) - como puxar produtos dinamicamente ---------- */
-/*
-  Sugestão:
-  - No Spring crie um endpoint GET /api/products que retorne JSON:
-      [
-        { "id": 101, "title":"DISCO 1", "artist":"Nome", "price":100, "imageUrl":"/img/101.jpg", "categoryId":1 },
-        ...
-      ]
-  - No JS você faz:
-      fetch('/api/products')
-        .then(r=>r.json())
-        .then(list => renderProducts(list));
-
-  Implementação de renderProducts (exemplo abaixo) insere os cards nas divs #cat-1, #cat-2 etc.
-*/
-
-function renderProducts(list){
-  // limpa todas as categorias (melhor mapear dinamicamente)
-  const cats = {};
-  list.forEach(p=> {
-    const container = cats[p.categoryId] || (cats[p.categoryId] = []);
-    container.push(p);
+  
+  /* botão comprar */
+  document.getElementById('checkoutBtn').addEventListener('click', ()=>{
+    window.location.href = '/checkout';
   });
-
-  Object.keys(cats).forEach(catId=>{
-    const grid = document.getElementById('cat-'+catId);
-    if(!grid) return;
-    grid.innerHTML = '';
-    cats[catId].forEach(p=>{
-      const card = document.createElement('div');
-      card.className = 'product-card';
-      card.innerHTML = `
-        <a class="product-link" href="/product/${p.id}">
-          <div class="product-thumb" style="background-image:url('${p.imageUrl||''}');background-size:cover;background-position:center"></div>
-          <div class="product-meta">
-            <div class="product-title">${p.title}</div>
-            <div class="product-artist">${p.artist||''}</div>
-            <div class="product-price">R$ ${Number(p.price).toFixed(2)}</div>
-          </div>
-        </a>
-        <button class="btn-add" data-prod='${JSON.stringify({id:p.id,title:p.title,price:p.price})}'>Adicionar</button>
-      `;
-      grid.appendChild(card);
-    });
-  });
-
-  // re-bind events para os novos botões:
+  
+  /* vincular botões "Adicionar" nas cards estáticas (se houver) */
   document.querySelectorAll('.btn-add').forEach(btn=>{
-    btn.removeEventListener && btn.removeEventListener('click', ()=>{});
     btn.addEventListener('click', e=>{
       const prod = JSON.parse(e.currentTarget.dataset.prod);
       addToCart(prod);
       openCart();
     });
   });
+  
+  /* carregar carrinho ao iniciar */
+  renderCart();
+});
+
+
+
+
+/* ============================================
+   INTEGRAÇÃO: CARREGAR CATEGORIAS DINAMICAMENTE
+   ============================================ */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const categories = document.querySelectorAll("article.category");
+
+  categories.forEach(article => {
+    const categoriaId = article.dataset.categoryId;
+    const titleEl = article.querySelector(".category-title");
+    const gridEl  = article.querySelector(".product-grid");
+
+    carregarCategoria(categoriaId, titleEl, gridEl);
+  });
+});
+
+/**
+ * Carrega uma categoria do Spring:
+ * GET /api/categorias/{id}
+ */
+async function carregarCategoria(id, titleElement, gridElement) {
+  try {
+    const response = await fetch(`/api/categorias/${id}`);
+
+    if (!response.ok) {
+      console.error("Erro ao carregar categoria ID:", id);
+      return;
+    }
+
+    const categoria = await response.json();
+
+    /* ---------- 1. TÍTULO DA CATEGORIA ---------- */
+    titleElement.textContent = categoria.nome;
+
+    /* ---------- 2. LIMPA O GRID ---------- */
+    gridElement.innerHTML = "";
+
+    /* ---------- 3. INSERE OS PRODUTOS ---------- */
+    categoria.discosCd.forEach(disco => {
+      const card = document.createElement("div");
+      card.className = "product-card";
+      card.dataset.id = disco.id;
+
+      card.innerHTML = `
+        <a href="/product/${disco.id}" class="product-link">
+          <div class="product-thumb">
+            <img src="${disco.capa}" alt="${disco.nome}">
+          </div>
+          <div class="product-meta">
+            <div class="product-title">${disco.nome}</div>
+            <div class="product-artist">${disco.artista}</div>
+            <div class="product-price">R$ ${disco.preco.toFixed(2)}</div>
+          </div>
+        </a>
+        
+        <button class="btn-add" data-prod='${JSON.stringify({
+          id: disco.id,
+          title: disco.nome,
+          price: disco.preco
+        })}'>
+          Adicionar
+        </button>
+      `;
+
+      gridElement.appendChild(card);
+    });
+
+    /* ---------- 4. REBIND DOS BOTÕES "ADICIONAR" ---------- */
+    gridElement.querySelectorAll(".btn-add").forEach(btn => {
+      btn.addEventListener("click", e => {
+        const prod = JSON.parse(e.currentTarget.dataset.prod);
+        addToCart(prod);
+        openCart();
+      });
+    });
+
+  } catch (error) {
+    console.error("Erro inesperado ao carregar categoria:", error);
+  }
 }
-
-/* Exemplo de uso (descomente quando tiver endpoint):
-fetch('/api/products')
-  .then(r=>r.json())
-  .then(data => renderProducts(data));
-*/
-
-/* Troca de tela de processo para sucesso na Tela de Pagamento */
-document.getElementById("btnFazerPedido").onclick = () => {
-  const main = document.getElementById("mainLayout");
-
-  main.classList.remove("ativo-pagamento");
-  main.classList.add("ativo-sucesso");
-};
