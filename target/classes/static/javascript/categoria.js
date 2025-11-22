@@ -42,17 +42,17 @@ async function carregarCategoria(id, titleElement, gridElement) {
       card.dataset.id = disco.id;
 
       card.innerHTML = `
-        <a href="produto/${disco.id}" class="product-link">
-          <div class="product-thumb">
-            <img src="${disco.capa}" alt="${disco.nome}">
-          </div>
-          <div class="product-meta">
-            <div class="product-title">${disco.nome}</div>
-            <div class="product-artist">${disco.artista}</div>
-            <div class="product-price">R$ ${disco.preco.toFixed(2)}</div>
-          </div>
+        <a href="/produto/${disco.id}" class="product-link">
+            <div class="product-thumb">
+                <img src="${disco.capa}" alt="${disco.nome}">
+            </div>
+            <div class="product-meta">
+                <div class="product-title">${disco.nome}</div>
+                <div class="product-artist">${disco.artista}</div>
+                <div class="product-price">R$ ${disco.preco}</div>
+            </div>
         </a>
-        
+
         <button class="btn-add" data-prod='${JSON.stringify({
           id: disco.id,
           title: disco.nome,

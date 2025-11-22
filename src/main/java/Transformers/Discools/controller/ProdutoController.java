@@ -13,6 +13,7 @@ public class ProdutoController {
     @GetMapping("produto/{id}")
     public String paginaProduto(@PathVariable int id, Model model) {
         model.addAttribute("produtoId", id);
-        return "produto"; 
+        return "produto";
+ 
     }
 }
