@@ -1,13 +1,12 @@
 package Transformers.Discools.repository;
 
-import Transformers.Discools.model.DiscosCD;
-import Transformers.Discools.model.Usuario;
 import Transformers.Discools.model.CategoriaDisco;
-import org.springframework.stereotype.Component;
+import Transformers.Discools.model.DiscosCD;
 import jakarta.annotation.PostConstruct;
-
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.stereotype.Component;
+
 
 @Component
 public class PovoaBanco {
@@ -24,41 +23,66 @@ public class PovoaBanco {
     private void carregarDadosIniciais() {
 
         // Criação de todos os produtos do sistema
-        DiscosCD disco1 = new DiscosCD(1, "this is what ____ feels like", "JVKE", "Pop", 42, 59.90f, "Um dos álbuns mais lindos da história.", 10, "CD", "/midia/capas/capa1.jpg");
+        DiscosCD disco1 = new DiscosCD(1, "Meus Caros Amigos", "Chico Buarque", "Bossa - Nova", 45, 96.80f,
+                "Uma obra marcante da fase madura de Chico Buarque, unindo crítica social, lirismo e arranjos sofisticados. As canções trazem um olhar atento sobre o Brasil, equilibrando leveza melódica e profundidade temática, tornando o álbum atemporal.",
+                2, "Disco", "/midia/capas/Capa1.jpeg");
         Banco.adicionarDisco(disco1);
 
-        DiscosCD disco2 = new DiscosCD(2, "Thriller", "Michael Jackson", "Pop", 42, 79.90f, "O disco mais vendido de todos os tempos, um clássico absoluto.", 12, "Vinil", "/midia/capas/capa1.jpg");
+        DiscosCD disco2 = new DiscosCD(2, "I've Tried Everything but Therapy", "Teddy Swims", "Alternativa", 45, 96.90f,
+                "Um álbum que mistura soul, pop e R&B, explorando vulnerabilidade emocional e autoconhecimento. Teddy Swims entrega vocais intensos e letras marcantes sobre relações difíceis e processos de cura interna.",
+                1, "Disco", "/midia/capas/Capa2.png");
         Banco.adicionarDisco(disco2);
 
-        DiscosCD disco3 = new DiscosCD(3, "Back in Black", "AC/DC", "Rock", 41, 69.90f, "Um dos maiores álbuns de rock da história, cheio de energia.", 8, "CD", "/midia/capas/capa1.jpg");
+        DiscosCD disco3 = new DiscosCD(3, "Mucho Barato", "Control Machete", "Hip Hop", 45, 119.99f,
+                "Um dos discos mais importantes do hip hop latino, trazendo batidas pesadas e letras diretas. A energia crua e o estilo agressivo do grupo consolidaram este álbum como referência do gênero nos anos 90.",
+                3, "Disco", "/midia/capas/Capa3.jpg");
         Banco.adicionarDisco(disco3);
 
-        DiscosCD disco4 = new DiscosCD(4, "Nevermind", "Nirvana", "Grunge", 49, 72.50f, "O álbum que marcou uma geração e mudou o rock para sempre.", 7, "Vinil", "/midia/capas/capa1.jpg");
+        DiscosCD disco4 = new DiscosCD(4, "Hollow Knight (Original Soundtrack)", "Christopher Larkin", "Orquestra", 45, 220.00f,
+                "Uma trilha sonora atmosférica que une orquestração delicada e tons melancólicos. As composições constroem um mundo imersivo, capturando perfeitamente a sensação de mistério, solidão e beleza do jogo.",
+                1, "Disco", "/midia/capas/Capa4.jpg");
         Banco.adicionarDisco(disco4);
 
-        DiscosCD disco5 = new DiscosCD(5, "Abbey Road", "The Beatles", "Rock", 47, 84.90f, "Clássico atemporal dos Beatles, com produção impecável.", 9, "Vinil", "/midia/capas/capa1.jpg");
+        DiscosCD disco5 = new DiscosCD(5, "Sobrevivendo no Inferno", "Racionais MC's", "Rap", 45, 78.90f,
+                "Um marco absoluto do rap brasileiro, com letras contundentes sobre desigualdade, violência e resistência. O álbum combina narrativa forte, crítica social e produção icônica, tornando-se parte da história da música nacional.",
+                4, "Disco", "/midia/capas/Capa5.jpg");
         Banco.adicionarDisco(disco5);
 
-        DiscosCD disco6 = new DiscosCD(6, "Rumours", "Fleetwood Mac", "Rock", 39, 74.90f, "Um dos discos mais icônicos da história, cheio de harmonias perfeitas.", 11, "CD", "/midia/capas/capa1.jpg");
+        DiscosCD disco6 = new DiscosCD(6, "The Normal Album", "Will Wood", "Pop Rock", 45, 119.90f,
+                "Um álbum excêntrico, criativo e emocionalmente complexo. Will Wood mistura teatralidade, humor irônico e reflexões profundas sobre identidade e saúde mental, entregando uma experiência musical singular.",
+                3, "Disco", "/midia/capas/Capa6.jpg");
         Banco.adicionarDisco(disco6);
 
-        DiscosCD disco7 = new DiscosCD(7, "Hotel California", "Eagles", "Rock", 43, 69.90f, "Um marco do rock clássico, com guitarras marcantes e identidade única.", 10, "CD", "/midia/capas/capa1.jpg");
+        DiscosCD disco7 = new DiscosCD(7, "Addison", "Addison Rae", "Pop", 45, 302.00f,
+                "Um projeto pop moderno que combina produção elegante, melodias cativantes e estética atual. O álbum mostra uma proposta sonora envolvente, explorando temas como confiança, imagem e emoções jovens.",
+                5, "Disco", "/midia/capas/Capa7.jpg");
         Banco.adicionarDisco(disco7);
 
-        DiscosCD disco8 = new DiscosCD(8, "The Dark Side of the Moon", "Pink Floyd", "Progressive Rock", 42, 89.90f, "Obra-prima conceitual com som inovador e atmosfera única.", 5, "Vinil", "/midia/capas/capa1.jpg");
+        DiscosCD disco8 = new DiscosCD(8, "Folklore", "Taylor Swift", "Indie/pop", 45, 74.90f,
+                "Um dos trabalhos mais refinados de Taylor Swift, com composições introspectivas, atmosfera tranquila e narrativa madura. O álbum explora histórias, sentimentos e metáforas em uma sonoridade leve e melódica.",
+                5, "CD", "/midia/capas/Capa8.png");
         Banco.adicionarDisco(disco8);
 
-        DiscosCD disco9 = new DiscosCD(9, "Born to Die", "Lana Del Rey", "Indie Pop", 50, 69.90f, "Álbum cinematográfico com estética marcante e melancólica.", 13, "CD", "/midia/capas/capa1.jpg");
+        DiscosCD disco9 = new DiscosCD(9, "Lux", "Rosalía", "Pop", 45, 79.90f,
+                "Um álbum que mistura experimentação pop, estética moderna e o estilo vocal marcante de Rosalía. As faixas exploram intensidade emocional e identidade artística, criando um trabalho coeso e impactante.",
+                5, "CD", "/midia/capas/Capa9.jpeg");
         Banco.adicionarDisco(disco9);
 
-        DiscosCD disco10 = new DiscosCD(10, "21", "Adele", "Soul/Pop", 48, 75.90f, "Um dos discos mais premiados da década, com vocais poderosos.", 11, "CD", "/midia/capas/capa1.jpg");
+        DiscosCD disco10 = new DiscosCD(10, "Hozier", "Hozier", "Folk", 45, 130.00f,
+                "O álbum de estreia de Hozier combina folk, soul e poesia sombria. Com vocais profundos e letras carregadas de simbolismo, o disco aborda temas como humanidade, fé e amor com forte expressão emocional.",
+                5, "Disco", "/midia/capas/Capa10.jpg");
         Banco.adicionarDisco(disco10);
 
-        DiscosCD disco11 = new DiscosCD(11, "Come Away With Me", "Norah Jones", "Jazz", 40, 64.90f, "Um álbum suave, elegante e premiado com vários Grammys.", 8, "CD", "/midia/capas/capa1.jpg");
+        DiscosCD disco11 = new DiscosCD(11, "Alumbramento", "Djavan", "MPB", 45, 80.00f,
+                "Um clássico da MPB com harmonias ricas, melodias fluidas e o estilo inconfundível de Djavan. O álbum combina romantismo, poesia e ritmos brasileiros em composições vibrantes e sofisticadas.",
+                5, "Disco", "/midia/capas/Capa11.jpeg");
         Banco.adicionarDisco(disco11);
 
-        DiscosCD disco12 = new DiscosCD(12, "Legend", "Bob Marley & The Wailers", "Reggae", 51, 72.90f, "A coletânea definitiva de Bob Marley, atemporal e cheia de vida.", 12, "Vinil", "/midia/capas/capa1.jpg");
+        DiscosCD disco12 = new DiscosCD(12, "From Zero", "Linkin Park", "Rock", 45, 150.00f,
+                "Um álbum que revisita elementos marcantes do rock alternativo com emoção e intensidade. As faixas exploram resiliência, perda e reconexão, trazendo a identidade sonora característica do Linkin Park.",
+                5, "Disco", "/midia/capas/Capa12.jpg");
         Banco.adicionarDisco(disco12);
+
 
 
         // ========== CATEGORIAS DA HOME ==========

@@ -11,4 +11,11 @@ public class HomeController {
     public String index() {
         return "home"; 
     }
+
+    // Renderiza a página PAGAMENTO.HTML
+    @GetMapping("/pagamento")
+    public String index2() {
+        return "pagamento"; 
+    }
+    
 }

@@ -14,7 +14,7 @@
     <div class="topbar">
       <nav class="nav">
         <ul class="nav-center">
-          <li class="nav-item"><a href="#" class="nav-link active">HOME</a></li>
+          <li class="nav-item"><a href="/" class="nav-link active">HOME</a></li>
         </ul>
 
         <div class="nav-center-logo">
@@ -27,20 +27,79 @@
   <main class="main-layout ativo-pagamento" id="mainLayout">
 
     <section class="tela tela-pagamento">
+
       <div class="buying-steps">
         <img class="steps-image" src="/midia/icones/iconeProcessoPagamento.png" alt="Processo de Pagamento">
       </div>
-  
+
       <h3 class="payment-title">ESCOLHA A FORMA DE PAGAMENTO:</h3>
-  
-      <div class="payment-options">
-        <button class="payment-btn"></button>
-        <button class="payment-btn"></button>
-        <button class="payment-btn"></button>
-      </div>
-  
-      <button id="btnFazerPedido" class="submit-btn">FAZER PEDIDO</button>
+
+      <form class="payment-form">
+
+        <div class="payment-options">
+          <label class="payment-btn">
+            <input type="radio" name="pagamento" value="cartao">
+            <span>CARTÃO</span>
+          </label>
+
+          <label class="payment-btn">
+            <input type="radio" name="pagamento" value="pix">
+            <span>PIX</span>
+          </label>
+
+          <label class="payment-btn">
+            <input type="radio" name="pagamento" value="dinheiro">
+            <span>DINHEIRO</span>
+          </label>
+        </div>
+
+
+        <!-- CAMPOS DINÂMICOS -->
+        <div class="payment-extra">
+
+          <!-- CARTÃO -->
+          <div class="extra-fields" data-type="cartao">
+            <input type="text" placeholder="Número do Cartão" maxlength="19">
+            <input type="text" placeholder="Nome no Cartão">
+
+            <div class="flex-row">
+              <input type="text" placeholder="Validade (MM/AA)" maxlength="5">
+              <input type="text" placeholder="CVV" maxlength="3">
+            </div>
+          </div>
+
+          <!-- PIX -->
+          <div class="extra-fields" data-type="pix">
+            <input type="text" placeholder="Digite sua chave PIX">
+          </div>
+
+          <!-- DINHEIRO -->
+          <div class="extra-fields" data-type="dinheiro">
+            <input type="number" placeholder="Valor entregue para troco">
+          </div>
+
+        </div>
+
+        <button type="submit" id="btnFazerPedido" class="submit-btn">FAZER PEDIDO</button>
+
+      </form>
+
     </section>
+
+    <script>
+      // Mostrar inputs extras conforme seleção
+      const radios = document.querySelectorAll("input[name='pagamento']");
+      const extras = document.querySelectorAll(".extra-fields");
+
+      radios.forEach(radio => {
+        radio.addEventListener("change", () => {
+          extras.forEach(e => e.style.display = "none");
+          const active = document.querySelector(`.extra-fields[data-type='${radio.value}']`);
+          if (active) active.style.display = "flex";
+        });
+      });
+    </script>
+
   
     <section class="tela tela-sucesso">
       <h3 class="success-title">PEDIDO REALIZADO COM SUCESSO!</h3>
@@ -50,13 +109,14 @@
           <img src="/midia/icones/iconeCheck.png" class="icone-topo" alt="Check de Sucesso">
       </div>
   
-      <button class="submit-btn" >CONTINUAR NAVEGANDO</button>
+      <button id="btnContinuar" class="submit-btn">CONTINUAR NAVEGANDO</button>
+
     </section>
     
   </main>
 
   <script src="/javascript/app.js"></script>
-  <!--
+  
   <script>
     document.getElementById("btnFazerPedido").onclick = () => {
       const main = document.getElementById("mainLayout");
@@ -64,7 +124,13 @@
       main.classList.remove("ativo-pagamento");
       main.classList.add("ativo-sucesso");
     };
+
+
+    document.getElementById("btnContinuar").addEventListener("click", () => {
+      window.location.href = "/";
+    });
+
   </script>
-  -->
+  
 </body>
 </html>

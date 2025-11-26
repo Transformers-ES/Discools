@@ -141,7 +141,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const checkoutButton = document.getElementById('checkoutBtn');
   if (checkoutButton) {
     checkoutButton.addEventListener('click', () => {
-      window.location.href = '/checkout';
+      saveCart([]);              // limpa o carrinho
+      renderCart();              // atualiza visualmente (se estiver na home)
+      window.location.href = '/pagamento';  // redireciona
     });
   }
 

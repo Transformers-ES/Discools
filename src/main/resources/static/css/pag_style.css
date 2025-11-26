@@ -62,13 +62,13 @@ a{color:inherit;text-decoration:none}
 
 .success-title {text-align:center;font-size:32px;font-weight:800;color:#555;margin-bottom:14px;letter-spacing:1px}
 
-.payment-options {display:flex;flex-direction:column;gap:15px;margin-bottom:60px;}
+.payment-options {display:flex;gap:15px;margin-bottom:60px;}
 
 .payment-btn {width: 100%;height:40px;background:#bbb;border-radius:8px;border:none;cursor:pointer;}
 
 /* ========== BOTÃO FINAL ========== */
 
-.submit-btn {background:#B97CF0;padding: 12px 40px;border:none;color:#fff;border-radius:12px;font-weight:700;cursor:pointer;}
+.submit-btn {background:#B97CF0;padding: 12px 40px;border:none;color:#fff;border-radius:12px;font-weight:700;cursor:pointer;margin-top: 100px}
 
 /* mensagens vazio */
 .empty-msg{color:#2b1b3c;font-weight:700}
@@ -104,4 +104,130 @@ a{color:inherit;text-decoration:none}
   .cart-sidebar{width:100%;right:-100%}
   .cart-sidebar.open{ right:0; }
   .main-layout.shifted{ margin-right:0; } /* mobile: cart cobre, não empurra */
+}
+
+/* ===== TELA DE PAGAMENTO ===== */
+
+.tela-pagamento {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    gap: 25px;
+}
+
+
+/* título */
+.tela-pagamento .payment-title {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #333;
+}
+
+/* form */
+.tela-pagamento .payment-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+/* opções de pagamento */
+.tela-pagamento .payment-options {
+    display: flex;
+    gap: 20px;
+}
+
+/* botões das opções */
+.tela-pagamento .payment-btn {
+    width: 110px;
+    height: 110px;
+    border: 2px solid #ddd;
+    border-radius: 14px;
+    background: #fafafa;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 10px;
+    transition: 0.25s ease;
+    position: relative;
+}
+
+.tela-pagamento .payment-btn input {
+    display: none;
+}
+
+.tela-pagamento .payment-btn:hover {
+    background: #f0f0f0;
+    border-color: #555;
+}
+
+/* indicação de selecionado */
+.tela-pagamento .payment-btn input:checked ~ span {
+    font-weight: 600;
+    color: #000;
+}
+
+.tela-pagamento .payment-btn input:checked ~ span::after {
+    content: "";
+    width: 14px;
+    height: 14px;
+    background: #111;
+    border-radius: 50%;
+    position: absolute;
+    top: 15px;
+}
+
+/* inputs extras */
+.payment-extra {
+    width: 100%;
+    max-width: 360px;
+}
+
+.extra-fields {
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* inputs */
+.extra-fields input {
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: 0.25s ease;
+}
+
+.extra-fields input:focus {
+    border-color: #000;
+}
+
+/* linha dupla */
+.extra-fields .flex-row {
+    display: flex;
+    gap: 12px;
+}
+
+/* botão enviar */
+.tela-pagamento .submit-btn {
+    padding: 12px 32px;
+    background: #111;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.tela-pagamento .submit-btn:hover {
+    background: #333;
+    transform: translateY(-2px);
 }

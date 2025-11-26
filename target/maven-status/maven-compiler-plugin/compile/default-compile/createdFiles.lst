@@ -1,7 +1,5 @@
 Transformers/Discools/model/DiscosCD.class
 Transformers/Discools/model/ItemDoPedido.class
-Transformers/Discools/model/Pedido.class
-Transformers/Discools/model/Usuario.class
 Transformers/Discools/repository/Banco.class
 Transformers/Discools/controller/HomeController.class
 Transformers/Discools/DiscoolsApplication.class
