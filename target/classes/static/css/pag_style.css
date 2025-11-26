@@ -77,13 +77,22 @@ a{color:inherit;text-decoration:none}
   display: none;
 }
 
+/* Mostrar pagamento apenas quando ativo */
 .main-layout.ativo-pagamento .tela-pagamento {
   display: block;
 }
+.main-layout.ativo-pagamento .tela-sucesso {
+  display: none;
+}
 
+/* Mostrar sucesso apenas quando ativo */
 .main-layout.ativo-sucesso .tela-sucesso {
   display: block;
 }
+.main-layout.ativo-sucesso .tela-pagamento {
+  display: none;
+}
+
 
 /* responsividade */
 @media (max-width:1024px){

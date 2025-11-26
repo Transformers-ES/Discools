@@ -28,9 +28,9 @@ public class PovoaBanco {
                 2, "Disco", "/midia/capas/Capa1.jpeg");
         Banco.adicionarDisco(disco1);
 
-        DiscosCD disco2 = new DiscosCD(2, "I've Tried Everything but Therapy", "Teddy Swims", "Alternativa", 45, 96.90f,
+        DiscosCD disco2 = new DiscosCD(2, "I`ve Tried Everything but Therapy", "Teddy Swims", "Alternativa", 45, 96.90f,
                 "Um álbum que mistura soul, pop e R&B, explorando vulnerabilidade emocional e autoconhecimento. Teddy Swims entrega vocais intensos e letras marcantes sobre relações difíceis e processos de cura interna.",
-                1, "Disco", "/midia/capas/Capa2.png");
+                5, "Disco", "/midia/capas/Capa2.png");
         Banco.adicionarDisco(disco2);
 
         DiscosCD disco3 = new DiscosCD(3, "Mucho Barato", "Control Machete", "Hip Hop", 45, 119.99f,
